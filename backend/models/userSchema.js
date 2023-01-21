@@ -35,10 +35,20 @@ const userSchema = mongoose.Schema(
       match: [/^[0-9]{10}$/, "Please add a valid phone number"],
     },
 
-    bio: {
+    occupation: {
       type: String,
-      maxlength: [250, "Bio must be at most 250 characters long"],
-      default: "Hey there",
+      required: [true, "Please add an occupation"],
+      //provide a list of options
+
+      enum: [
+        "Student",
+        "Teacher",
+        "Engineer",
+        "Doctor",
+        "Lawyer",
+        "farmer",
+        "other",
+      ],
     },
   },
   {
