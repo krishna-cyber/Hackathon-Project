@@ -15,7 +15,7 @@ const generateToken = (id) => {
 //controllers
 //user registration controller
 const registerUser = asyncHandler(async (req, res, next) => {
-  const { name, email, password, phone } = req.body;
+  const { name, email, password, phone, age, occupation } = req.body;
   console.log(req.body);
 
   //validation
@@ -42,6 +42,8 @@ const registerUser = asyncHandler(async (req, res, next) => {
     email,
     password,
     phone,
+    age,
+    occupation,
   });
   //Generating token
   const token = generateToken(newUser._id); //Token will expire in 1 day and generated for the newUser._id

@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
+//user schema for health care system
+
 const userSchema = mongoose.Schema(
   {
     name: {
@@ -17,6 +19,12 @@ const userSchema = mongoose.Schema(
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
         "Please add a valid email",
       ],
+    },
+    age: {
+      type: Number,
+      required: [true, "Please add an age"],
+      min: [1, "Age must be at least 1"],
+      max: [100, "Age must be less than 100"],
     },
 
     password: {
@@ -38,8 +46,6 @@ const userSchema = mongoose.Schema(
     occupation: {
       type: String,
       required: [true, "Please add an occupation"],
-      //provide a list of options
-
       enum: [
         "Student",
         "Teacher",
