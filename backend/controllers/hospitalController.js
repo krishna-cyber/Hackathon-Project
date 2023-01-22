@@ -82,18 +82,18 @@ const loginhUser = asyncHandler(async (req, res, next) => {
     throw new Error("Please fill all required fields");
   }
   //check if the user exists
-  const user = await User.findOne({
+  const hospital = await Hospital.findOne({
     email,
   });
-  if (!user) {
+  if (!hospital) {
     res.status(400);
-    throw new Error("User does not exist! Please Sign up first💖");
+    throw new Error("hospital does not exist! Please Sign up first💖");
   }
   //check if the password is correct
-  const isPasswordCorrect = await bcrypt.compare(password, user.password);
+  const isPasswordCorrect = await bcrypt.compare(password, hospital.password);
   //sending response to client after password correct and user found
-  if (isPasswordCorrect && user) {
-    const { _id, name, email, photo, phone, bio } = user;
+  if (isPasswordCorrect && hospital) {
+    const { _id, name, email, contact, treatnments } = hospital;
 
     //generate token for the user
     const token = generateToken(_id); //Token will expire in 1 day and generated for the user._id
@@ -111,8 +111,8 @@ const loginhUser = asyncHandler(async (req, res, next) => {
       _id,
       name,
       email,
-      photo,
       contact,
+      treatnments,
       token,
     });
   } else {
@@ -125,4 +125,5 @@ const loginhUser = asyncHandler(async (req, res, next) => {
 module.exports = {
   registerhUser,
   loginhUser,
+  logouthUser,
 };
