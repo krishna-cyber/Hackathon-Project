@@ -1,12 +1,11 @@
 import React from "react";
-import img from "../images/logo.jpg";
 
 const Navbar = () => {
   return (
     <div className='nav'>
       <nav className='flex justify-around items-center'>
         <div className='logo'>
-          <img src={img} alt='logo' srcset='frontend\src\images\logo.jpg' />
+          <img className=' h-12' src='./src/images/logo1.jpg' alt='logo' />
         </div>
         <div className='links'>
           <ul className=' flex gap-10'>
