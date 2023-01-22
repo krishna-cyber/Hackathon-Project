@@ -9,6 +9,7 @@ const errorHandlingMW = require("./middlewares/errorHandlingMW");
 
 //importing routes
 const userRoute = require("./Routes/userRoute");
+const hospitalRoute = require("./Routes/hospitalRoute");
 
 //creating server
 const app = express(); //creating express app
@@ -25,6 +26,7 @@ const PORT = process.env.PORT || 5000;
 
 //Routes middleware
 app.use("/api/user", userRoute);
+app.use("/api/hospital", hospitalRoute);
 
 //connect to database and start server
 mongoose
