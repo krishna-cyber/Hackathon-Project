@@ -122,8 +122,19 @@ const loginUser = asyncHandler(async (req, res, next) => {
     throw new Error("Invalid email or password!!");
   }
 });
+
+//user logout controller
+const logoutUser = asyncHandler(async (req, res, next) => {
+  //delete cookie
+  res.clearCookie("token");
+  //send response
+  res.status(200).json({
+    message: "Logged out successfully",
+  });
+});
 // exporting controllers
 module.exports = {
   registerUser,
   loginUser,
+  logoutUser,
 };

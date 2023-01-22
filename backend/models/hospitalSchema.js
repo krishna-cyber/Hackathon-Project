@@ -37,16 +37,16 @@ const hospitalSchema = mongoose.Schema(
         required: [true, "Please add a treatment"],
       },
     ],
-    // location: {
-    //   longitude: {
-    //     type: Number,
-    //     required: [true, "Please add a appropriate location"],
-    //   },
-    //   latitude: {
-    //     type: Number,
-    //     required: [true, "Please add a appropriate location"],
-    //   },
-    // },
+    location: {
+      longitude: {
+        type: String,
+        required: [true, "Please add a appropriate location"],
+      },
+      latitude: {
+        type: String,
+        required: [true, "Please add a appropriate location"],
+      },
+    },
   },
   {
     timestamps: true,

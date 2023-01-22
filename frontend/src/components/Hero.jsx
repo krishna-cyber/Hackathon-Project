@@ -43,6 +43,7 @@ const Hero = () => {
           <h2 className=' font-extrabold text-2xl text-[#2674BC] mt-3 p-4'>
             LOCATION
           </h2>
+
           <div className='map'></div>
         </div>
       </div>

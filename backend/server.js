@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const helmet = require("helmet");
 const cookieParser = require("cookie-parser"); //importing cookie parser
 require("dotenv").config();
 const errorHandlingMW = require("./middlewares/errorHandlingMW");
@@ -10,11 +11,13 @@ const errorHandlingMW = require("./middlewares/errorHandlingMW");
 //importing routes
 const userRoute = require("./Routes/userRoute");
 const hospitalRoute = require("./Routes/hospitalRoute");
+const adminRoute = require("./routes/adminRoute");
 
 //creating server
 const app = express(); //creating express app
 
 //Middleware
+app.use(helmet()); //for security
 app.use(cors()); //to allow cross origin resource sharing
 app.use(bodyParser.json()); // for parsing application/json data come from frontend to backend
 app.use(express.json()); //parse application/json
@@ -27,6 +30,7 @@ const PORT = process.env.PORT || 5000;
 //Routes middleware
 app.use("/api/user", userRoute);
 app.use("/api/hospital", hospitalRoute);
+app.use("/api/admin", adminRoute);
 
 //connect to database and start server
 mongoose

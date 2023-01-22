@@ -73,7 +73,7 @@ const registerhUser = asyncHandler(async (req, res, next) => {
   }
 });
 
-//user login controller
+//hospital login controller
 const loginhUser = asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
   //validation
@@ -119,6 +119,16 @@ const loginhUser = asyncHandler(async (req, res, next) => {
     res.status(400);
     throw new Error("Invalid email or password!!");
   }
+});
+
+//logout controller
+const logouthUser = asyncHandler(async (req, res, next) => {
+  //clear cookie from the browser
+  res.clearCookie("token");
+  //sending response message
+  res.status(200).json({
+    message: "Logged out successfully",
+  });
 });
 
 // exporting controllers
